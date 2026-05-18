@@ -1,5 +1,6 @@
 # Experiment 7: PL/SQL – Variables, Control Structures and Loops
-
+### Name: Aravind kumar SS
+### Reg No: 212223110004
 ## AIM
 To write and execute simple PL/SQL programs using variables, loops, and conditional statements.
 
@@ -37,7 +38,22 @@ END;
 **Expected Output:**  
 Greater number is: 80
 
----
+## program:
+```
+DECLARE
+    num1 NUMBER := 80;  -- First number
+    num2 NUMBER := 50;  -- Second number
+BEGIN
+    IF num1 > num2 THEN
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num1);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num2);
+    END IF;
+END;
+```
+## output:
+
+<img width="666" height="167" alt="image" src="https://github.com/user-attachments/assets/7ce115dc-b61e-4fd8-be20-81d6c15a81e1" />
 
 ## 2. Write a PL/SQL program to Calculate Sum of First N Natural Numbers
 
@@ -50,7 +66,24 @@ Greater number is: 80
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
 
----
+## program:
+```
+DECLARE
+    n NUMBER := 10;       -- Number up to which sum is calculated
+    i NUMBER := 1;        -- Loop counter
+    total_sum NUMBER := 0; -- To store the sum
+BEGIN
+    WHILE i <= n LOOP
+        total_sum := total_sum + i;
+        i := i + 1;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || total_sum);
+END;
+```
+## output:
+
+<img width="718" height="271" alt="image" src="https://github.com/user-attachments/assets/fd6b6aca-a92f-42e5-a98f-d14b9ad644a1" />
 
 ## 3. Write a PL/SQL program to generate Fibonacci series
 
@@ -64,7 +97,32 @@ Sum of first 10 natural numbers is: 55
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 
----
+## program:
+```
+DECLARE
+    n NUMBER := 7;     -- Number of terms in the series
+    a NUMBER := 0;     -- First term
+    b NUMBER := 1;     -- Second term
+    c NUMBER;          -- Next term
+    i NUMBER := 3;     -- Counter starting from 3 since first two terms are already known
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Fibonacci sequence:');
+    DBMS_OUTPUT.PUT_LINE(a);
+    DBMS_OUTPUT.PUT_LINE(b);
+
+    WHILE i <= n LOOP
+        c := a + b;
+        DBMS_OUTPUT.PUT_LINE(c);
+        a := b;
+        b := c;
+         i := i + 1;
+    END LOOP;
+END;
+```
+## output:
+
+<img width="683" height="349" alt="image" src="https://github.com/user-attachments/assets/5084c654-05c2-40d1-9f81-5c7751c75eb5" />
+
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
 
@@ -77,7 +135,28 @@ Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 n = 1535  
 Reversed number is 5351
 
----
+## program:
+```
+DECLARE
+    n NUMBER := 1535;       -- Original number
+    original NUMBER := 1535;-- To keep the original number for display
+    reversed NUMBER := 0;   -- To store the reversed number
+    digit NUMBER;           -- To extract each digit
+BEGIN
+    WHILE n > 0 LOOP
+        digit := MOD(n, 10);              -- Get the last digit
+        reversed := reversed * 10 + digit;-- Build the reversed number
+        n := TRUNC(n / 10);               -- Remove the last digit
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('n = ' || original);
+    DBMS_OUTPUT.PUT_LINE('Reversed number is ' || reversed);
+END;
+```
+## output:
+
+<img width="685" height="248" alt="image" src="https://github.com/user-attachments/assets/5dafbfc5-fa4a-4f36-a26f-1cec414d8d2c" />
+
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
 
@@ -90,5 +169,31 @@ Reversed number is 5351
 a = 10, b = 9, c = 15  
 Largest of three number is 15
 
+## program:
+```
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 9;
+    c NUMBER := 15;
+    largest NUMBER;
+BEGIN
+    IF a >= b AND a >= c THEN
+        largest := a;
+    ELSIF b >= a AND b >= c THEN
+        largest := b;
+    ELSE
+        largest := c;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('a = ' || a || ', b = ' || b || ', c = ' || c);
+    DBMS_OUTPUT.PUT_LINE('Largest of three number is ' || largest);
+END;
+```
+## output:
+
+<img width="697" height="266" alt="image" src="https://github.com/user-attachments/assets/294439bd-3e53-4a06-a1c4-c1736a7a6bc5" />
+
+
 ## RESULT
 Thus, the PL/SQL programs using variables, conditionals, and loops were executed successfully.
+
